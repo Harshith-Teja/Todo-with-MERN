@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 //routes
-app.use("/api/tasks", todoItemRoutes);
+app.use("/api/todos", todoItemRoutes);
 
 //DB connection
 connectDB();
