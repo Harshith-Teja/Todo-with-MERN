@@ -1,14 +1,18 @@
 import { deleteTask } from "../api/todoApi";
+import { TodoItemType } from "../types/TodoItemType";
 
 type TodoItemProps = {
   _id: string;
   item: string;
   checked: boolean;
+  todos: TodoItemType[];
+  setTodos: React.Dispatch<React.SetStateAction<TodoItemType[]>>;
 };
 
-const TodoItem = ({ _id, item, checked }: TodoItemProps) => {
+const TodoItem = ({ _id, item, checked, todos, setTodos }: TodoItemProps) => {
   const deleteTodo = async () => {
     await deleteTask(_id);
+    setTodos(todos.filter((todo) => todo._id !== _id));
   };
 
   return (

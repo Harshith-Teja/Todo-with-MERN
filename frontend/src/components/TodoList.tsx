@@ -2,7 +2,6 @@ import TodoItem from "./TodoItem";
 import { TodoItemType } from "../types/TodoItemType";
 import { useEffect, useState } from "react";
 import { createTask, getTasks } from "../api/todoApi";
-import { v4 as uuid } from "uuid";
 
 const TodoList = async () => {
   const [todos, setTodos] = useState<TodoItemType[]>([]);
@@ -18,10 +17,9 @@ const TodoList = async () => {
   }, []);
 
   const addTask = async () => {
-    const id: string = uuid();
-
-    // const data =
-    await createTask({ item: newTodo, checked: false });
+    const createdTodo = await createTask({ item: newTodo, checked: false });
+    setTodos((prev) => [...prev, createdTodo]);
+    setNewTodo("");
   };
 
   return (
@@ -45,6 +43,8 @@ const TodoList = async () => {
           item={item.item}
           checked={item.checked}
           _id={item._id}
+          todos={todos}
+          setTodos={setTodos}
         />
       ))}
     </div>
