@@ -8,7 +8,7 @@ export const getTasks = async () => {
 };
 
 export const createTask = async (todoItem: {
-  id: Number;
+  id: string;
   item: string;
   checked: boolean;
 }) => {

@@ -1,11 +1,27 @@
 import TodoItem from "./TodoItem";
 import { TodoItemType } from "../types/TodoItemType";
-import axios from "axios";
+import { useEffect, useState } from "react";
+import { createTask, getTasks } from "../api/todoApi";
+import { v4 as uuid } from "uuid";
 
 const TodoList = async () => {
-  const list: TodoItemType[] = await axios.get("/api/todos");
+  const [todos, setTodos] = useState<TodoItemType[]>([]);
+  const [newTodo, setNewTodo] = useState("");
 
-  const addTask = () => {};
+  useEffect(() => {
+    const fetchTodos = async () => {
+      const data = await getTasks();
+      setTodos(data);
+    };
+
+    fetchTodos();
+  }, []);
+
+  const addTask = async () => {
+    const id: string = uuid();
+
+    const data = await createTask({ id, item: newTodo, checked: false });
+  };
 
   return (
     <div className="bg-red-400 w-[30%] p-8">
@@ -15,12 +31,14 @@ const TodoList = async () => {
           type="text"
           placeholder="type your task"
           className="p-4 rounded-lg w-full"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
         />
         <button className="rounded-lg p-4 bg-gray-400" onClick={addTask}>
           +
         </button>
       </div>
-      {list.map((item) => (
+      {todos.map((item) => (
         <TodoItem key={item.id} item={item.item} checked={item.checked} />
       ))}
     </div>
