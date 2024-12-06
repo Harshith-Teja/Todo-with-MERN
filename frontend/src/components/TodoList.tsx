@@ -1,24 +1,9 @@
 import TodoItem from "./TodoItem";
 import { TodoItemType } from "../types/TodoItemType";
+import axios from "axios";
 
-const TodoList = () => {
-  const list: TodoItemType[] = [
-    {
-      id: 1,
-      item: "Learn Typescript",
-      checked: false,
-    },
-    {
-      id: 2,
-      item: "Learn Go",
-      checked: false,
-    },
-    {
-      id: 3,
-      item: "Learn JS",
-      checked: false,
-    },
-  ];
+const TodoList = async () => {
+  const list: TodoItemType[] = await axios.get("/api/todos");
 
   const addTask = () => {};
 
