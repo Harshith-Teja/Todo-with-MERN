@@ -20,7 +20,8 @@ const TodoList = async () => {
   const addTask = async () => {
     const id: string = uuid();
 
-    const data = await createTask({ id, item: newTodo, checked: false });
+    // const data =
+    await createTask({ item: newTodo, checked: false });
   };
 
   return (
@@ -39,7 +40,12 @@ const TodoList = async () => {
         </button>
       </div>
       {todos.map((item) => (
-        <TodoItem key={item.id} item={item.item} checked={item.checked} />
+        <TodoItem
+          key={item._id}
+          item={item.item}
+          checked={item.checked}
+          _id={item._id}
+        />
       ))}
     </div>
   );
