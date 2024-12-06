@@ -1,14 +1,13 @@
 import mongoose, { Schema } from "mongoose";
 
 export type TodoItemType = {
-  id: string;
+  _id: string;
   item: string;
   checked: boolean;
 };
 
 const todoItemSchema = new Schema(
   {
-    id: { type: String },
     item: { type: String },
     checked: { type: Boolean },
   },

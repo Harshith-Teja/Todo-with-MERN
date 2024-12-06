@@ -15,9 +15,9 @@ export const getTodos = async (req: Request, res: Response) => {
 //CREATE a todo
 export const createTodo = async (req: Request, res: Response) => {
   try {
-    const { id, item, checked } = req.body;
+    const { item, checked } = req.body;
 
-    const newTodoItem = new Todos({ id, item, checked });
+    const newTodoItem = new Todos({ item, checked });
     const savedTodoItem = await newTodoItem.save();
 
     res.status(201).json(savedTodoItem);
@@ -29,9 +29,9 @@ export const createTodo = async (req: Request, res: Response) => {
 //DELETE a todo
 export const deleteTodo = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const { _id } = req.params;
 
-    await Todos.findByIdAndDelete(id);
+    await Todos.findByIdAndDelete(_id);
 
     res.status(200).json({ message: "TodoItem deleted successfully" });
   } catch (err) {
