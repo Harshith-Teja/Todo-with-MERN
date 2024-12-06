@@ -15,4 +15,4 @@ const todoItemSchema = new Schema(
   { timestamps: true }
 );
 
-export default mongoose.model<TodoItemType>("TodoItem", todoItemSchema);
+export default mongoose.model<TodoItemType>("Todos", todoItemSchema);
