@@ -16,7 +16,7 @@ const TodoList = async () => {
     fetchTodos();
   }, []);
 
-  const addTask = async () => {
+  const addTodo = async () => {
     const createdTodo = await createTask({ item: newTodo, checked: false });
     setTodos((prev) => [...prev, createdTodo]);
     setNewTodo("");
@@ -33,7 +33,7 @@ const TodoList = async () => {
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
         />
-        <button className="rounded-lg p-4 bg-gray-400" onClick={addTask}>
+        <button className="rounded-lg p-4 bg-gray-400" onClick={addTodo}>
           +
         </button>
       </div>
