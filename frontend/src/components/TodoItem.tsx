@@ -26,7 +26,7 @@ const TodoItem = ({ _id, item, checked, todos, setTodos }: TodoItemProps) => {
   };
 
   return (
-    <div className="bg-purple-400 my-8 rounded-lg p-4 flex gap-4">
+    <div className="bg-slate-100 bg-opacity-30 my-8 rounded-lg p-4 flex gap-4">
       <input
         type="checkbox"
         checked={checkedState}

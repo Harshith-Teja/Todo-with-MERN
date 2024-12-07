@@ -23,7 +23,7 @@ const TodoList = () => {
   };
 
   return (
-    <div className="bg-red-400 w-[30%] p-8">
+    <div className="w-[30%] p-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ">
       <h1 className="font-bold text-3xl text-center">Todo List</h1>
       <div className="flex my-4 gap-4">
         <input
