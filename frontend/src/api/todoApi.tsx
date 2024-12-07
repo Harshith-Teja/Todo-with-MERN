@@ -15,6 +15,15 @@ export const createTask = async (todoItem: {
   return response.data;
 };
 
+export const updateTask = async (todoItem: {
+  _id: string;
+  item: string;
+  checked: boolean;
+}) => {
+  const response = await axios.put(`${API_URL}/${todoItem._id}`, todoItem);
+  return response.data;
+};
+
 export const deleteTask = async (_id: string) => {
   const response = await axios.delete(`${API_URL}/${_id}`);
   return response.data;

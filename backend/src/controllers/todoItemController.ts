@@ -26,6 +26,24 @@ export const createTodo = async (req: Request, res: Response) => {
   }
 };
 
+//UPDATE a todo
+export const updateTodo = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    const todoItem = await Todos.findOne({ _id: id }).exec();
+
+    if (todoItem != null) todoItem.checked = req.body.checked;
+
+    const updatedTask = await todoItem?.save();
+
+    res.status(201).json(updatedTask);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 //DELETE a todo
 export const deleteTodo = async (req: Request, res: Response) => {
   try {
