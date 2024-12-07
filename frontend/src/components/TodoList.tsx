@@ -3,7 +3,7 @@ import { TodoItemType } from "../types/TodoItemType";
 import { useEffect, useState } from "react";
 import { createTask, getTasks } from "../api/todoApi";
 
-const TodoList = async () => {
+const TodoList = () => {
   const [todos, setTodos] = useState<TodoItemType[]>([]);
   const [newTodo, setNewTodo] = useState("");
 

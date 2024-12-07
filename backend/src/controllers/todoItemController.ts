@@ -29,9 +29,9 @@ export const createTodo = async (req: Request, res: Response) => {
 //DELETE a todo
 export const deleteTodo = async (req: Request, res: Response) => {
   try {
-    const { _id } = req.params;
+    const { id } = req.params;
 
-    await Todos.findByIdAndDelete(_id);
+    await Todos.findByIdAndDelete(id);
 
     res.status(200).json({ message: "TodoItem deleted successfully" });
   } catch (err) {
